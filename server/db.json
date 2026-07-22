@@ -1,0 +1,92 @@
+[
+  {
+    "_id": "4hmnwvfo5jgb4wc1ydoqkv",
+    "createdAt": "2026-07-21T10:21:48.360Z",
+    "updatedAt": "2026-07-21T10:22:28.361Z",
+    "imageUrl": "/uploads/1784629303420-65699939.jpg",
+    "label": "crack",
+    "confidence": 0.6577021479606628,
+    "breakdown": {
+      "crack": 0.6577,
+      "no_crack": 0.3423
+    },
+    "location": "",
+    "notes": "",
+    "costEstimate": {
+      "crackLengthM": 1,
+      "wallAreaSqFt": 12,
+      "alreadyHaveTools": false,
+      "fillerKgNeeded": 0.29,
+      "fillerPacksNeeded": 1,
+      "fillerCost": 200,
+      "puttyCost": 120,
+      "toolsCost": 100,
+      "total": 420,
+      "currency": "₹",
+      "assumptions": {
+        "metersCoveredPerKgFiller": 3.5,
+        "fillerPricePerKg": 200,
+        "puttyPricePerSqFt": 10
+      }
+    }
+  },
+  {
+    "_id": "2b5xbnvlh16rf1qh7adcnl",
+    "createdAt": "2026-07-21T10:26:31.733Z",
+    "updatedAt": "2026-07-21T10:26:31.736Z",
+    "imageUrl": "/uploads/1784629583499-729851651.jpg",
+    "label": "no_crack",
+    "confidence": 0.5,
+    "breakdown": {
+      "crack": 0.5,
+      "no_crack": 0.5
+    },
+    "location": "",
+    "notes": ""
+  },
+  {
+    "_id": "et4oq0qufjmy7a6gpm7wrc",
+    "createdAt": "2026-07-21T10:27:31.457Z",
+    "updatedAt": "2026-07-21T10:27:31.459Z",
+    "imageUrl": "/uploads/1784629642766-791370471.jpg",
+    "label": "crack",
+    "confidence": 0.4599471390247345,
+    "breakdown": {
+      "crack": 0.4599,
+      "no_crack": 0.5401
+    },
+    "location": "",
+    "notes": ""
+  },
+  {
+    "_id": "sd2ahnp21n0z74zsdkljpi",
+    "createdAt": "2026-07-21T10:28:22.306Z",
+    "updatedAt": "2026-07-21T10:30:26.755Z",
+    "imageUrl": "/uploads/1784629694500-465940118.jpg",
+    "label": "crack",
+    "confidence": 0.4599471390247345,
+    "breakdown": {
+      "crack": 0.4599,
+      "no_crack": 0.5401
+    },
+    "location": "",
+    "notes": "",
+    "costEstimate": {
+      "crackLengthM": 1,
+      "wallAreaSqFt": 100,
+      "alreadyHaveTools": false,
+      "fillerKgNeeded": 0.29,
+      "fillerPacksNeeded": 1,
+      "fillerCost": 200,
+      "puttyCost": 1000,
+      "toolsCost": 100,
+      "total": 1300,
+      "currency": "₹",
+      "assumptions": {
+        "metersCoveredPerKgFiller": 3.5,
+        "fillerPricePerKg": 200,
+        "puttyPricePerSqFt": 10
+      }
+    }
+  }
+]

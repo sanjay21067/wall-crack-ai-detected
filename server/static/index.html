@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>WallScan — Static Tester</title>
+  <style>
+    body { font-family: system-ui, sans-serif; padding: 20px; }
+    pre { background:#f6f8fa; padding:10px; border-radius:6px }
+  </style>
+</head>
+<body>
+  <h1>WallScan — Static Tester</h1>
+
+  <section>
+    <h2>Samples</h2>
+    <button id="loadSamples">Load measurements & AI report</button>
+    <h3>Measurements</h3>
+    <pre id="measurements">(not loaded)</pre>
+    <h3>AI Report</h3>
+    <pre id="aireport">(not loaded)</pre>
+  </section>
+
+  <section>
+    <h2>Upload an image (test detection)</h2>
+    <form id="uploadForm">
+      <input type="file" name="image" accept="image/*" required />
+      <button type="submit">Upload & Predict</button>
+    </form>
+    <h3>Response</h3>
+    <pre id="uploadResp">(not sent)</pre>
+  </section>
+
+  <script>
+    document.getElementById('loadSamples').addEventListener('click', async () => {
+      const m = await fetch('/api/samples/measurements').then(r => r.json()).catch(e => ({error: String(e)}));
+      document.getElementById('measurements').textContent = JSON.stringify(m, null, 2);
+      const r = await fetch('/api/samples/ai_report').then(r => r.text()).catch(e => 'ERROR: '+e);
+      document.getElementById('aireport').textContent = r;
+    });
+
+    document.getElementById('uploadForm').addEventListener('submit', async (ev) => {
+      ev.preventDefault();
+      const f = ev.currentTarget.elements['image'].files[0];
+      const fd = new FormData(); fd.append('image', f);
+      const resp = await fetch('/api/detections', { method: 'POST', body: fd }).then(r => r.json()).catch(e => ({error: String(e)}));
+      document.getElementById('uploadResp').textContent = JSON.stringify(resp, null, 2);
+    });
+  </script>
+</body>
+</html>
