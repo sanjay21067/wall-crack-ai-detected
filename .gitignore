@@ -4,5 +4,4 @@ dist/
 uploads/*
 !uploads/.gitkeep
 __pycache__/
-*.pt
 .DS_Store
