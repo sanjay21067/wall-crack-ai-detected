@@ -7,8 +7,8 @@ export default defineConfig({
     port: 5173,
     proxy: {
       // Forward API calls to the Express server during development
-      "/api": "http://localhost:5000",
-      "/uploads": "http://localhost:5000",
+      "/api": "https://wall-crack-ai-detected-backend.onrender.com",
+      "/uploads": "https://wall-crack-ai-detected-backend.onrender.com",
     },
   },
 });
