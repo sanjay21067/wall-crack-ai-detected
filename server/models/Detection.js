@@ -164,4 +164,22 @@ MockDetection.countDocuments = async function (filter = {}) {
   return data.length;
 };
 
-export default MongooseDetection;
+function getModel() {
+  if (process.env.USE_MOCK_DB === "true" || mongoose.connection.readyState !== 1) {
+    return MockDetection;
+  }
+  return MongooseDetection;
+}
+
+const DetectionProxy = new Proxy(MongooseDetection, {
+  get(target, prop) {
+    const activeModel = getModel();
+    const value = Reflect.get(activeModel, prop, activeModel);
+    if (typeof value === "function") {
+      return value.bind(activeModel);
+    }
+    return value;
+  },
+});
+
+export default DetectionProxy;

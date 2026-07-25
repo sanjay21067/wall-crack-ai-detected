@@ -98,7 +98,7 @@ export async function createDetection(req, res) {
     res.status(201).json(detection);
   } catch (err) {
     console.error("createDetection error:", err);
-    res.status(500).json({ error: "Server error while creating detection" });
+    res.status(500).json({ error: err.message || "Server error while creating detection" });
   }
 }
 
