@@ -4,7 +4,10 @@ const SERVER_URL = import.meta.env.VITE_API_URL
   ? import.meta.env.VITE_API_URL.replace(/\/$/, "")
   : "";
 
-const api = axios.create({ baseURL: `${SERVER_URL}/api` });
+const api = axios.create({ 
+  baseURL: `${SERVER_URL}/api`,
+  timeout: 20000 
+});
 
 export function getImageUrl(path) {
   if (!path) return "";
