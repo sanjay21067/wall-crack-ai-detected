@@ -1,3 +1,5 @@
+import { getImageUrl } from "../api.js";
+
 function formatPct(n) {
   return `${Math.round(n * 100)}%`;
 }
@@ -25,7 +27,7 @@ export default function DetectionCard({ detection }) {
       </h2>
 
       <div className="result-body">
-        <img src={detection.imageUrl} alt="Scanned wall" className="result-thumb" />
+        <img src={getImageUrl(detection.imageUrl)} alt="Scanned wall" className="result-thumb" />
         <div className="result-details">
           <span className={`badge ${isCrack ? "badge--alert" : "badge--safe"}`}>
             {isCrack ? "Crack detected" : "No crack detected"}

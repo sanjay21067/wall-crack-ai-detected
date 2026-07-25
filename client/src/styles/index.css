@@ -143,10 +143,6 @@ body {
     grid-template-columns: 1fr;
   }
 }
-  font-size: 14px;
-  color: var(--ink-soft);
-  margin-bottom: 16px;
-}
 
 .admin-box {
   margin-top: 18px;

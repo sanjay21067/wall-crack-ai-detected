@@ -1,0 +1,35 @@
+services:
+  # 1. React Frontend (Static Site)
+  - type: web
+    name: wall-crack-frontend
+    runtime: static
+    buildCommand: cd client && npm install && npm run build
+    staticPublishPath: ./client/dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: VITE_API_URL
+        value: https://wall-crack-ai-detected-backend.onrender.com
+
+  # 2. Node.js Express Backend
+  - type: web
+    name: wall-crack-backend
+    runtime: node
+    buildCommand: cd server && npm install
+    startCommand: cd server && npm start
+    envVars:
+      - key: MONGO_URI
+        sync: false
+      - key: ML_SERVICE_URL
+        value: https://wall-crack-ai-detected-ml.onrender.com
+      - key: CLIENT_ORIGIN
+        value: https://wall-crack-ai-detected-frontend1.onrender.com
+
+  # 3. Python Flask ML Service
+  - type: web
+    name: wall-crack-ml
+    runtime: python
+    buildCommand: cd ml-service && pip install -r requirements.txt
+    startCommand: cd ml-service && gunicorn app:app --bind 0.0.0.0:$PORT

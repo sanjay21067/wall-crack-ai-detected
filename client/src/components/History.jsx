@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { deleteDetection, fetchDetections } from "../api.js";
+import { deleteDetection, fetchDetections, getImageUrl } from "../api.js";
 
 export default function History({ refreshKey }) {
   const [items, setItems] = useState([]);
@@ -56,7 +56,7 @@ export default function History({ refreshKey }) {
       <ul className="history-list">
         {items.map((item) => (
           <li key={item._id} className="history-item">
-            <img src={item.imageUrl} alt="" className="history-thumb" />
+            <img src={getImageUrl(item.imageUrl)} alt="" className="history-thumb" />
             <div className="history-info">
               <span className={`badge badge--small ${item.label === "crack" ? "badge--alert" : "badge--safe"}`}>
                 {item.label === "crack" ? "Crack" : "Clean"}

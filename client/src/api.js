@@ -1,6 +1,16 @@
 import axios from "axios";
 
-const api = axios.create({ baseURL: "/api" });
+const SERVER_URL = import.meta.env.VITE_API_URL 
+  ? import.meta.env.VITE_API_URL.replace(/\/$/, "")
+  : "";
+
+const api = axios.create({ baseURL: `${SERVER_URL}/api` });
+
+export function getImageUrl(path) {
+  if (!path) return "";
+  if (path.startsWith("http://") || path.startsWith("https://")) return path;
+  return `${SERVER_URL}${path.startsWith("/") ? "" : "/"}${path}`;
+}
 
 export async function uploadImage(file, { location = "", notes = "" } = {}) {
   const formData = new FormData();
