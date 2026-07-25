@@ -26,6 +26,14 @@ if (hasClientBuild) {
   app.use(express.static(clientBuildPath));
 }
 
+app.get("/", (req, res) => {
+  res.json({
+    message: "WallScan API is running!",
+    health: "/api/health",
+    frontend: process.env.CLIENT_ORIGIN || "https://wall-crack-ai-detected-frontend1.onrender.com",
+  });
+});
+
 app.get("/api/health", (req, res) => res.json({ status: "ok" }));
 app.use("/api/detections", detectionRoutes);
 app.use("/api/samples", sampleRoutes);
